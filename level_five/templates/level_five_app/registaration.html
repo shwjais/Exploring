@@ -1,0 +1,17 @@
+{% extends "level_five_app/base.html" %}
+{% load static %}
+{% block body_block %}
+<div class="jumbotron">
+    {% if registered %}
+        <h1>Thank You For Register</h1>
+    {% else %}
+        <h1>Kindly Fill Out This Form</h1>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ user_form.as_p }}
+            {{ profile_form.as_p }}
+            <input type="submit" value="submit">
+        </form>
+    {% endif %}
+</div>
+{% endblock %}
